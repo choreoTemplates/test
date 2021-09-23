@@ -51,6 +51,6 @@ jobs:
           git remote -v
           # git config user.name wso2-ipaas-bot
           # git config user.email integration2020.wso2@gmail.com
-          # git add .
-          # git commit -m "inital choreo template files"
-          # git push
+          git add .
+          git commit -m "inital choreo template files"
+          git push
