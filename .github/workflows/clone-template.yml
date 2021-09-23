@@ -1,13 +1,18 @@
 name: Clone Template
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BAL_VERSION: "1.0.2"
+      ORG_NAME: test-org-01
+      APP_NAME: test-app-01
+      TEMPLATE: service
     steps:
       # checkout source repo
       - name: Checkout
@@ -19,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: choreo-templates/service
+          repository: choreo-templates/${{ env.TEMPLATE }}
           path: template
 
       # Runs a set of commands using the runners shell
