@@ -45,8 +45,8 @@ jobs:
           rm -rf $GITHUB_WORKSPACE/template/.git
           cp -a $GITHUB_WORKSPACE/template/. $GITHUB_WORKSPACE/main/.
           rm -rf template
-          ls -al
           cd main
+          ls -al
           # git remote set-url origin $GIT_WOKING_REMOTE
           git remote -v
           # git config user.name wso2-ipaas-bot
