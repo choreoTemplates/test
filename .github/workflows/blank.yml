@@ -30,7 +30,7 @@ jobs:
         run: |
           git clone https://github.com/choreoTemplates/service.git template
           ls -al
-          cp -a $GITHUB_WORKSPACE/template/service/. $GITHUB_WORKSPACE/.
+          cp -a $GITHUB_WORKSPACE/template/. $GITHUB_WORKSPACE/.
           rm -rf template
           echo Add other actions to build,
           echo test, and deploy your project.
