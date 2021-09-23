@@ -22,24 +22,24 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Run a multi-line script 1
-        run: |
-          git clone https://github.com/choreoTemplates/service.git template
-          ls -al
-          cp -a $GITHUB_WORKSPACE/template/. $GITHUB_WORKSPACE/.
-          rm -rf template
-          ls -al
-
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script 2
+      - name: Run a multi-line script
         run: |
+          export GIT_WOKING_REMOTE=$(git config --get remote.origin.url)
+          git clone https://github.com/choreoTemplates/service.git template
           ls -al
+          cp -a $GITHUB_WORKSPACE/template/. $GITHUB_WORKSPACE/.
+          rm -rf template
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          ls -al
+          git remote set-url origin $GIT_WOKING_REMOTE
           git remote -v
-          # git config user.name wso2-ipaas-bot
-          # git config user.email integration2020.wso2@gmail.com
-          # git add .
-          # git commit -m "inital choreo template files"
-          # git push
+          git config user.name wso2-ipaas-bot
+          git config user.email integration2020.wso2@gmail.com
+          git add .
+          git commit -m "inital choreo template files"
+          git push
