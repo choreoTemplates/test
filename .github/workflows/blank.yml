@@ -42,11 +42,13 @@ jobs:
           # export GIT_WOKING_REMOTE=$(git config --get remote.origin.url)
           # git clone https://github.com/choreoTemplates/service.git template
           # ls -al
-          # cp -a $GITHUB_WORKSPACE/template/. $GITHUB_WORKSPACE/.
-          # rm -rf template
-          # ls -al
+          rm -rf $GITHUB_WORKSPACE/template/.git
+          cp -a $GITHUB_WORKSPACE/template/. $GITHUB_WORKSPACE/main/.
+          rm -rf template
+          ls -al
+          cd main
           # git remote set-url origin $GIT_WOKING_REMOTE
-          # git remote -v
+          git remote -v
           # git config user.name wso2-ipaas-bot
           # git config user.email integration2020.wso2@gmail.com
           # git add .
