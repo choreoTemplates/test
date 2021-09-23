@@ -1,34 +1,21 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the workflow will run
+name: Clone Template
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      # - uses: actions/checkout@v2
+      # checkout source repo
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: main
+          path: source
 
+      # checkout template repo
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -36,19 +23,13 @@ jobs:
           path: template
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Copy template files and push to the user repo
         run: |
-          ls -al
-          # export GIT_WOKING_REMOTE=$(git config --get remote.origin.url)
-          # git clone https://github.com/choreoTemplates/service.git template
-          # ls -al
           rm -rf $GITHUB_WORKSPACE/template/.git
-          cp -a $GITHUB_WORKSPACE/template/. $GITHUB_WORKSPACE/main/.
+          cp -a $GITHUB_WORKSPACE/template/. $GITHUB_WORKSPACE/source/.
           rm -rf template
-          cd main
-          ls -al
-          # git remote set-url origin $GIT_WOKING_REMOTE
-          git remote -v
+          cd source
+          # rm -rf .github/workflows/clone-template.yml
           git config user.name wso2-ipaas-bot
           git config user.email integration2020.wso2@gmail.com
           git add .
