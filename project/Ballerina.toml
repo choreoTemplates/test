@@ -1,0 +1,7 @@
+[package]
+org = "test-org-01"
+name = "test-app-01"
+version = "0.1.0"
+
+[build-options]
+observabilityIncluded = true
