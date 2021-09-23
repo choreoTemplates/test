@@ -29,7 +29,9 @@ jobs:
           cp -a $GITHUB_WORKSPACE/template/. $GITHUB_WORKSPACE/source/.
           rm -rf template
           cd source
-          sed -i -e 's/{{ .BallerinaVersion}}/1.0.1/g' Dockerfile
+          sed -i -e 's/{{ .BallerinaVersion}}/$BAL_VERSION/g' Dockerfile
+          sed -i -e 's/{{ .OrgName}}/$ORG_NAME/g' project/Ballerina.toml
+          sed -i -e 's/{{ .AppName}}/$APP_NAME/g' project/Ballerina.toml
           # rm -rf .github/workflows/clone-template.yml
           git config user.name wso2-ipaas-bot
           git config user.email integration2020.wso2@gmail.com
