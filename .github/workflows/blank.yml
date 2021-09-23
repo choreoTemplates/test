@@ -36,6 +36,8 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           ls -al
+          git config user.name choreo-integrations
+          git config user.email integration2020.wso2@gmail.com
           git add .
           git commit -m "inital choreo template files"
           git push
